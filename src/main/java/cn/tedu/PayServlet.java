@@ -28,6 +28,8 @@ public class PayServlet extends HttpServlet {
         if(prod==null){
             out.write("没有添加任何商品");
         }else {
+            //将session销毁(将购物车中的商品删除)
+            session.invalidate();
             out.write("成功为"+prod+"完成支付");
         }
     }
