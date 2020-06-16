@@ -21,7 +21,7 @@ public class PayServlet extends HttpServlet {
         //----------------------------------------------------------
         //1.获取一个session对象(获取之前的session)
         HttpSession session = request.getSession();
-       /* //设置session的超时时间(s)
+       /* //设置session过期时间(s)
         session.setMaxInactiveInterval(30);*/
         String prod = (String) session.getAttribute("cart");
         //3.模拟支付，做出响应
