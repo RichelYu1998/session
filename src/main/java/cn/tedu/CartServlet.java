@@ -1,5 +1,6 @@
 package cn.tedu;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +19,12 @@ public class CartServlet extends javax.servlet.http.HttpServlet {
         String prod = request.getParameter("prod");
         //2.获取一个session对象，将商品信息保存在session中
         HttpSession session = request.getSession();
+        //创建一个名称为JSESSIONID的cookie，值为session的id
+        Cookie c = new Cookie("JSESSIONID", session.getId());
+        //设置cookie的存活时间为1天
+        c.setMaxAge(60*24*60);
+        //将cookie定下来
+        response.addCookie(c);
         session.setAttribute("cart",prod);
         //3.做出响应
         out.write("成功将"+prod+"加入购物车");
